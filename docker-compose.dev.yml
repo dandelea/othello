@@ -1,0 +1,60 @@
+version: '3'
+services:
+  database:
+    image: mongo:latest
+    restart: always
+    container_name: database
+    ports:
+      - "27017:27017"
+    environment:
+      - MONGO_INITDB_DATABASE=othello
+      - MONGO_INITDB_ROOT_USERNAME=user_othello
+      - MONGO_INITDB_ROOT_PASSWORD=password_othello
+    logging:
+      driver: "none"
+  worker:
+    build:
+      dockerfile: Dockerfile.dev
+      context: ./worker
+    container_name: worker
+    environment:
+      - MONGO_USERNAME=user_othello
+      - MONGO_PASSWORD=password_othello
+      - MONGO_HOSTNAME=database
+    depends_on:
+      - database
+  nginx:
+    restart: always
+    build:
+      dockerfile: Dockerfile.dev
+      context: ./nginx
+    ports: 
+      - '3050:80'
+    depends_on:
+      - backend
+      - client
+    links: 
+      - backend:backend
+  backend:
+    build:
+      dockerfile: Dockerfile.dev
+      context: ./api
+    volumes: 
+      - ./api:/app
+    environment: 
+      - MONGO_USERNAME=user_othello
+      - MONGO_PASSWORD=password_othello
+      - MONGO_HOSTNAME=database
+      - DEBUG=true
+      - FLASK_ENV=development
+    depends_on:
+      - worker
+  client:
+    build:
+      dockerfile: Dockerfile.dev
+      context: ./client
+    volumes: 
+      - /app/node_modules
+      - ./client:/app
+    depends_on:
+      - worker

@@ -1,0 +1,4 @@
+pymongo
+numpy
+python-crontab
+pytz

@@ -1,0 +1,314 @@
+@import url(./font/luckiest-guy.css);
+
+body{
+	height:100%;
+	overflow:hidden;
+	background: radial-gradient(ellipse at center, rgba(240,249,255,1) 0%,rgba(203,235,255,1) 25%,rgba(161,219,255,1) 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f0f9ff', endColorstr='#a1dbff',GradientType=1 );
+	font-family: "Luckiest Guy", sans-serif;
+	letter-spacing:1px;
+}
+
+div{
+	box-sizing:border-box;
+}
+
+@media screen and (max-device-width: 480px) and (orientation: portrait){
+	.wrapper {
+		position: absolute;
+		left: 0;
+		right: 0;
+		top: 0;
+		bottom: 0;
+	}
+}
+
+.wrapper{
+	width:750px;
+	position: relative;
+	margin: 80px auto;
+}
+#instructions{
+	box-sizing:border-box;
+	padding:15% 10%;
+	width:560px;
+	height:500px;
+	position:absolute;
+	top:0;
+	background: rgba(0,0,0,0.5);
+	z-index:100;
+	margin-top:-35px;
+	border-radius:15px;
+	border: 7px solid gold;
+	text-align:center;
+	color:#fff;
+}
+#instructions div {
+	display: table;
+	margin: 10% 0;
+}
+#instructions div img {
+	display: table-cell;
+	vertical-align: middle;
+	margin: 0 10%;
+	width: 100px;
+}
+#instructions div p {
+	display: table-cell;
+	vertical-align: middle;
+	color: gold;
+	font-size: 20px;
+}
+
+
+.gameover{
+	box-sizing:border-box;
+	padding:25% 0 25% 0;
+	width:560px;
+	height:500px;
+	position:absolute;
+	top:0;
+	background: rgba(0,0,0,0.5);
+	z-index:100;
+	margin-top:-35px;
+	border-radius:15px;
+	border: 7px solid gold;
+	text-align:center;
+	color:#fff;
+}
+
+#waiting-screen{
+	box-sizing:border-box;
+	padding:25% 0 25% 0;
+	width:560px;
+	height:500px;
+	position:absolute;
+	top:0;
+	background: rgba(0,0,0,0.5);
+	z-index:100;
+	margin-top:-35px;
+	border-radius:15px;
+	border: 7px solid gold;
+	text-align:center;
+	color:#fff;
+}
+
+a {
+	color: #fff;
+}
+
+.gameBoard{
+	width:560px;
+	margin: auto 20px;
+	position:relative;
+	float:left;
+}
+.gameBoard .row{
+	clear:both;
+}
+
+.sidebar{
+	width:140px;
+	height:285px;
+	position:relative;
+	float:right;
+}
+.scoreBoard{
+	width: 110px;
+    height: 250px;
+    margin-top: -34px;
+    padding: 10px 10px 0;
+    position: absolute;
+    top: 21px;
+    left: 15px;
+    border-radius: 8px;
+    background: rgba(0,0,0,0.8);
+    display: inline-block;
+    text-align: center;
+}
+.scoreBoard h2 {
+	margin-top: -10px;
+    text-align: right;
+    position: relative;
+    top: 21px;
+}
+.scoreBoard span {
+	width: 100%;
+    left: 0;
+    margin-top: 10%;
+}
+.lootracker {
+	padding: 0;
+	list-style-type: none;
+}
+.lootracker li{
+	height:40px;
+}
+.lootracker li img{
+	height:30px;
+	position:relative;
+	top:8px;
+}
+
+/* Board Tiles */
+
+.gametile{
+	width:70px;
+	height:91px;  
+	float:left;
+	margin-top:-34px;
+	position:relative;
+	transition: top 200ms ease;
+	cursor: pointer;
+}
+
+.grass{
+	background: url('./img/grass.png') no-repeat; 
+} 
+.grass:hover{
+	top:-10px; 
+}
+
+.dirt{
+	background: url('./img/dirt.png') no-repeat;
+}
+
+.stone{
+	background: url('./img/stone.png') no-repeat;
+}
+
+.water{
+	background: url('./img/water.png') no-repeat;
+}
+
+/* Text Styles */
+
+h2{
+	font-size:22px; 
+	color:#fff;
+}
+
+h3{
+	font-size:35px; 
+	color:#fff;
+	margin-bottom:5px;
+}
+
+.final-score{
+	font-size:55px; 
+	color:gold;
+}
+.score{
+	position:absolute;
+	font-size:26px;
+	color:gold;
+	right:10px;
+}
+
+.loot{
+	position:absolute;
+	font-size:22px;
+	color:#fff;
+	right:10px;
+	top:120px;
+	width: 100%;
+	left: 0;
+}
+
+/* Avatar */
+.avatar{
+	position:absolute;
+	left:-85px;
+}
+
+.speech-bubble{
+	background: url('./img/speech.png') no-repeat 0 0;
+	width:100px;
+	height:62px;
+	position:absolute;
+	text-align:center;
+	text-transform:uppercase;
+	font-size:20px;
+	line-height:56px;
+	left:-180px;
+	top:-30px;
+	opacity:1;
+}
+.blank {
+	position: relative;
+	width: 70px;
+	height: 91px;
+	float: left;
+	margin-top: -34px;
+	position: relative;
+	transition: top 200ms ease;
+	cursor: pointer;
+	background: url('./img/dirt.png') no-repeat;
+}
+.white {
+	position: relative;
+	width: 70px;
+	height: 91px;
+	float: left;
+	margin-top: -34px;
+	position: relative;
+	transition: top 200ms ease;
+	cursor: pointer;
+	background: url('./img/water.png') no-repeat;
+}
+.black {
+	position: relative;
+	width: 70px;
+	height: 91px;
+	float: left;
+	margin-top: -34px;
+	position: relative;
+	transition: top 200ms ease;
+	cursor: pointer;
+	background: url('./img/grass.png') no-repeat;
+}
+.options_white {
+	background: url('./img/option.png') no-repeat;
+}
+.options_black {
+	background: url('./img/option.png') no-repeat;
+}
+.options_white:hover {
+	background: url('./img/water.png') no-repeat;
+	top:-10px;
+	transition: transform .2s ease-in-out;
+	opacity: 0.6;
+}
+.options_black:hover {
+	background: url('./img/grass.png') no-repeat;
+	top:-10px;
+	transition: transform .2s ease-in-out;
+	opacity: 0.6;
+}
+.selection_white {
+	opacity: 0.7;
+	background: url('./img/water.png') no-repeat;
+}
+.selection_black {
+	opacity: 0.7;
+	background: url('./img/grass.png') no-repeat;
+}
+.button{
+	padding: 25px;
+	text-decoration: none;
+	text-align: center;
+	border-radius: 8px;
+	border: 2px solid PeachPuff;
+	background: url('./img/button.jpg') repeat;
+}
+.button:hover{
+	color:Khaki;
+	border-color: Sienna;
+}
+.button:active{
+	font-size:16px;
+	border-color: PeachPuff;
+}
+.fa {
+	display: inline-block;
+}

@@ -1,0 +1,4 @@
+flask
+numpy
+pymongo
+flask-cors
