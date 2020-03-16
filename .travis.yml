@@ -1,0 +1,22 @@
+sudo: required
+services:
+  - docker
+
+before_install:
+  - docker build -t dandelea/othello-client-test -f ./client/Dockerfile.dev ./client
+
+script:
+  - docker run dandelea/othello-client-test npm test -- --coverage
+
+after_success:
+  - docker build -t dandelea/othello-client ./client
+  - docker build -t dandelea/othello-api ./api
+  - docker build -t dandelea/othello-worker ./worker
+  - docker build -t dandelea/othello-nginx ./nginx
+  # Log in to the docker CLI
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+  # Take those images and push them to docker hub
+  - docker push dandelea/othello-client
+  - docker push dandelea/othello-api
+  - docker push dandelea/othello-worker
+  - docker push dandelea/othello-nginx
